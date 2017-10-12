@@ -1,0 +1,31 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#chat_area {
+    height: 500px;
+    margin-bottom: 10px;
+}
+
+.chat_entry {
+    margin-bottom: 2px;
+}
+
+.chat_entry_admin {
+    color: red;
+}
+
+.chat_username {
+    font-weight: bold;
+}
+
+.chat_msg {
+    margin-left: 5px;
+}
+
