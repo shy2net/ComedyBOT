@@ -13,5 +13,19 @@ module.exports = ComedyBot = {
     },
     getAnswer: (question) => {
         return botQuestions[question];
+    },
+    givesAFuck: () => {
+        var rndValue = Math.random();
+        return rndValue > 0.85;
+    },
+    getRandomJoke: () => {
+        var keys = Object.keys(botQuestions);
+        var rndQuestion = keys[Math.round(Math.random() * keys.length)];
+        var jokeAnswer = botQuestions[rndQuestion];
+
+        return {
+            "question": rndQuestion,
+            "answer": jokeAnswer
+        };
     }
 };

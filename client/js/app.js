@@ -66,9 +66,17 @@ app.controller('appController', ['$scope', 'socketService', 'chatService', ($sco
 	// Connect using SocketIO
 	socketService.connect();
 
+	// Points the chat area so we can scroll to it's end
+	var chatArea = document.querySelector("#chat_area");
+
 	// We have obtained a chat message, post it using the chat service
 	socketService.on('message', msg => {
 		chatService.addJsonMessage(msg);
+
+		// Scroll to the bottom always
+		setTimeout(() => {
+			chatArea.scrollTop = chatArea.scrollHeight;
+		}, 100);
 	});
 
 	// Notify the user that he should enter his username
