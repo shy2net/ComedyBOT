@@ -11,6 +11,7 @@ body {
 #chat_area {
     height: 500px;
     margin-bottom: 10px;
+    overflow: scroll;
 }
 
 .chat_entry {

@@ -1,6 +1,7 @@
 // App
 const app = angular.module('app', ['btford.socket-io']);
 
+// A simple service that stores all of the message
 app.factory('chatService', () => {
 	chatMessages = [];
 
@@ -23,6 +24,7 @@ app.factory('chatService', () => {
 	}
 });
 
+// Allowes us to access the SocketIO api
 app.factory('socketService', (socketFactory) => {
 	return socketFactory();
 });
@@ -51,6 +53,7 @@ app.controller('appController', ['$scope', 'socketService', 'chatService', ($sco
 				socketService.emit('message', chatService.getJsonMessage($scope.username, $scope.typedMessage));
 			}
 
+			// Clear the previous input
 			$scope.typedMessage = "";
 		}
 	};
@@ -60,10 +63,14 @@ app.controller('appController', ['$scope', 'socketService', 'chatService', ($sco
 		if (event.which == 13) $scope.onSendClick($scope.typedMessage);
 	}
 
+	// Connect using SocketIO
 	socketService.connect();
+
+	// We have obtained a chat message, post it using the chat service
 	socketService.on('message', msg => {
 		chatService.addJsonMessage(msg);
 	});
 
+	// Notify the user that he should enter his username
 	$scope.addAdminMessage("Hello there! in order to start please type in your username first.");
 }]);

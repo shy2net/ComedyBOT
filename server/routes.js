@@ -57,8 +57,15 @@ module.exports = (app, io) => {
 				// Broadcast the message back to everyone
 				io.emit('message', msg_entry);
 
+				
+				// If the last message was a question, save the answer for later
+				if (lastQuestion != null) {
+					comedyBot.addQuestion(lastQuestion, message);
+					console.log("Question has been added to the ComedyBOT database!");
+					lastQuestion = null;
+				}
 				// If our bot detects a question, read it and see if we need to add it to the database
-				if (message.endsWith("?")) {
+				else if (message.endsWith("?")) {
 					var botAnswer = comedyBot.getAnswer(message.toLowerCase());
 
 					if (botAnswer) {
@@ -76,11 +83,6 @@ module.exports = (app, io) => {
 						lastQuestion = message.toLowerCase(); // We don't mind about case sensitivity
 					}
 
-				}
-				else if (lastQuestion != null) {
-					comedyBot.addQuestion(lastQuestion, message);
-					console.log("Question has been added to the ComedyBOT database!");
-					lastQuestion = null;
 				}
 			}
 		});
