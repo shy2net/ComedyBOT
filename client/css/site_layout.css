@@ -16,6 +16,19 @@ body {
 
 .chat_entry {
     margin-bottom: 2px;
+    animation-name: enter-animation;
+    animation-duration: 0.3s;
+}
+
+@keyframes enter-animation {
+    from {
+        opacity: 0;
+        margin-top: 20px;
+    }
+    to {
+        opacity: 1;
+        margin-top: 0px;
+    }
 }
 
 .chat_entry_admin {
@@ -30,3 +43,7 @@ body {
     margin-left: 5px;
 }
 
+.username-field {
+    background-color: #d8d8d8;
+    color: #000;
+}
