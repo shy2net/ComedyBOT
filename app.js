@@ -2,6 +2,8 @@ const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     path = require('path'),
+    http = require('http').Server(app);
+    io = require('socket.io')(http),
     port = process.env.PORT || 3000;
 
 // Allow parsing JSON data obtained from post
@@ -11,7 +13,9 @@ app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/client`)); 
 
 // Our routes
-require(`./server/routes.js`)(app);
+require(`./server/routes.js`)(app,io);
 
-app.listen(port);										// let the games begin!
-console.log(`Web server listening on port ${port}`);
+http.listen(port, () => {
+    console.log(`Web server listening on port ${port}`);
+});	
+
