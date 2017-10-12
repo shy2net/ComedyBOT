@@ -6,13 +6,12 @@
 
 ## Installation
 
-1. `git clone git@github.com:shy2net/node-skeleton.git`
-2. `cd node-skeleton`
+1. `git clone git@github.com:shy2net/ComedyBOT.git`
+2. `cd ComedyBOT`
 3. `npm install`
 3. `npm start`
 4. Go to `http://localhost:3000`
-5. Enjoy life.
 
 ## Usage
 
-After running `npm start`, simple play with the bot!
+After running `npm start` and going into `http://localhost:3000`, simply play with the bot!

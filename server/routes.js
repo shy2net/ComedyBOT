@@ -1,4 +1,3 @@
-const util = require('./response_util');
 const comedyBot = require('./bot.js');
 const botName = "Glados";
 
